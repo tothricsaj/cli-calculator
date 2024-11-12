@@ -33,6 +33,7 @@ fn main() {
 
   if operation == "/" && second_num == 0 {
     println!("You cannot dived by zero!");
+    return;
   }
 
   if operation == "+" {
