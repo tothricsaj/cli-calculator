@@ -2,15 +2,16 @@ use std::io;
 
 fn main() {
   let mut input = String::new();
-  let first_num: i128;
-  let second_num: i128;
-  let operation_result: i128;
+  // let first_num: i128;
+  // let second_num: i128;
+  // let operation_result: i128;
 
   println!("Welcom the CLI calculator!");
 
   loop {
-    first_num = get_input("Please add first number!");
-    second_num = get_input("Please add first number!");
+    let operation_result  ;
+    let first_num = get_input("Please add first number!");
+    let second_num = get_input("Please add first number!");
 
     println!("Which operation do you want? (+, -, *, /)");
     io::stdin()
@@ -38,6 +39,9 @@ fn main() {
     }
 
     println!("Result is {}", operation_result);
+    println!("You can exit with CTRL+C");
+
+    input.clear();
   }
 }
 
