@@ -2,9 +2,6 @@ use std::io;
 
 fn main() {
   let mut input = String::new();
-  // let first_num: i128;
-  // let second_num: i128;
-  // let operation_result: i128;
 
   println!("Welcom the CLI calculator!");
 
