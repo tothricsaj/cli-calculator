@@ -8,46 +8,47 @@ fn main() {
 
   println!("Welcom the CLI calculator!");
 
-  println!("Please give the first number!");
-  io::stdin()
-    .read_line(&mut input)
-    .expect("Cannot read line");
+  loop {
+    first_num = get_input("Please add first number!");
+    second_num = get_input("Please add first number!");
 
-  first_num = input.trim().parse::<i128>().expect("Cannot read the number");
-  input.clear();
+    println!("Which operation do you want? (+, -, *, /)");
+    io::stdin()
+      .read_line(&mut input)
+      .expect("Cannot read line");
 
-  println!("Please give the second number!");
-  io::stdin()
-    .read_line(&mut input)
-    .expect("Cannot read line");
+    let operation = input.trim();
 
-  second_num = input.trim().parse::<i128>().expect("Cannot read the number");
-  input.clear();
+    if operation == "/" && second_num == 0 {
+      println!("You cannot dived by zero!");
+      return;
+    }
 
-  println!("Which operation do you want? (+, -, *, /)");
-  io::stdin()
-    .read_line(&mut input)
-    .expect("Cannot read line");
+    if operation == "+" {
+      operation_result = first_num + second_num;
+    } else if operation == "-" {
+      operation_result = first_num - second_num;
+    } else if operation == "*" {
+      operation_result = first_num * second_num;
+    } else if operation == "/" {
+      operation_result = first_num / second_num;
+    } else {
+      println!("Invalid operation!");
+      operation_result = -1;
+    }
 
-  let operation = input.trim();
-
-  if operation == "/" && second_num == 0 {
-    println!("You cannot dived by zero!");
-    return;
+    println!("Result is {}", operation_result);
   }
+}
 
-  if operation == "+" {
-    operation_result = first_num + second_num;
-  } else if operation == "-" {
-    operation_result = first_num - second_num;
-  } else if operation == "*" {
-    operation_result = first_num * second_num;
-  } else if operation == "/" {
-    operation_result = first_num / second_num;
-  } else {
-    println!("Invalid operation!");
-    operation_result = -1;
-  }
+fn get_input(msg: &str) -> i128 {
+  let mut input_var = String::new();
+  println!("{}", msg);
+  io::stdin()
+    .read_line(&mut input_var)
+    .expect("Cannot read line");
 
-  println!("Result is {}", operation_result);
+  let number = input_var.trim().parse::<i128>().expect("Cannot read the number");
+
+  number
 }
